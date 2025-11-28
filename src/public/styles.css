@@ -1,0 +1,34 @@
+:root{--bg:#0f1720;--card:#0b1220;--accent:#06b6d4;--text:#e6eef6}
+*{box-sizing:border-box;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial}
+body{background:linear-gradient(180deg,#071025, #07172b);color:var(--text);margin:0;padding:24px}
+header{max-width:900px;margin:0 auto 18px}
+h1{margin:0 0 6px;font-size:22px}
+.container{display:grid;grid-template-columns:1fr;gap:16px;max-width:900px;margin:0 auto}
+.card{background:rgba(255,255,255,0.03);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+form{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+input,textarea{padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:var(--text);flex:1}
+button{background:var(--accent);border:0;padding:8px 12px;color:#042b33;border-radius:8px;cursor:pointer}
+.small{padding:6px 8px;border-radius:6px;font-weight:700}
+pre.result{white-space:pre-wrap;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);max-height:220px;overflow:auto}
+/* detailed record layout similar to DGII site */
+.result.detailed{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);/* show full info no inner scrolling */overflow:visible}
+.result.detailed .row{display:flex;align-items:center;padding:10px 8px;border-radius:4px}
+.result.detailed .row:nth-child(odd){background:rgba(255,255,255,0.01)}
+.result.detailed .label{width:260px;font-weight:700;color:rgba(255,255,255,0.8)}
+.result.detailed .value{flex:1;color:rgba(255,255,255,0.95)}
+
+.result.list{display:flex;flex-direction:column;gap:12px}
+.result.full{max-height:none;overflow:visible}
+.card-row{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);cursor:pointer}
+.card-row:hover{border-color:rgba(255,255,255,0.06)}
+.card-title{font-weight:700}
+
+/* ensure page scrolls instead of inner scrolls so full info is visible */
+main.container { max-height: none; }
+footer.center{text-align:center;margin-top:18px;color:rgba(255,255,255,0.5)}
+
+.status{display:inline-block;margin-top:8px;padding:6px 10px;border-radius:8px;font-weight:600}
+.status.offline{background:rgba(255,0,0,0.06);color:#ffb4b4;border:1px solid rgba(255,0,0,0.12)}
+.status.online{background:rgba(0,255,170,0.06);color:#9df4d1;border:1px solid rgba(0,255,170,0.08)}
+
+@media(min-width:900px){.container{grid-template-columns:repeat(3,1fr)}}

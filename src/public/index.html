@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>RNC Lookup — UI</title>
+    <link rel="stylesheet" href="/ui/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>RNC Lookup — Interfaz de prueba</h1>
+      <p>Usa los formularios de abajo para probar los endpoints localmente (servidor en <code>http://localhost:3000</code>).</p>
+      <div style="display:flex;gap:10px;align-items:center">
+        <div id="backendStatus" class="status offline">Estado backend: desconectado</div>
+        <button id="checkHealthBtn" class="small">Comprobar</button>
+        <div id="lastCheck" style="color:rgba(255,255,255,0.45);font-size:12px">última comprobación: —</div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Unified search: by RNC or by name -->
+      <section class="card" style="grid-column: span 2;">
+        <h2>Búsqueda por RNC o por nombre</h2>
+        <form id="searchFormUnified">
+          <input id="searchQueryUnified" placeholder="Escribe RNC o nombre completo/parte (ej: 100022768 or 'Bermuda Beach')" />
+          <input id="searchLimitUnified" type="number" value="10" min="1" max="50" style="width:80px" />
+          <button type="submit">Buscar</button>
+        </form>
+        <div id="searchResultUnified" class="result list full"></div>
+      </section>
+
+      <section class="card">
+        <h2>Búsqueda parcial (nombre o RNC)</h2>
+        <form id="searchForm">
+          <input id="searchQuery" placeholder="Ej: universidad, corporacion, 100" />
+          <input id="searchLimit" type="number" value="10" min="1" max="200" style="width:80px" />
+          <button type="submit">Buscar</button>
+        </form>
+        <div id="searchResult" class="result list"></div>
+      </section>
+
+      <!-- bulk removed as requested -->
+    </main>
+
+    <footer class="center">Hecho para pruebas locales — no exponer en producción sin protección</footer>
+
+    <script src="/ui/app.js"></script>
+  </body>
+</html>
