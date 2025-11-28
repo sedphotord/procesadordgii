@@ -13,7 +13,7 @@ export interface RncRecord {
   [key: string]: any;
 }
 
-const DATA_DIR = path.join(process.cwd(), '..', 'dist', 'sitio-para-netlify', 'data');
+const DATA_DIR = path.join(process.cwd(), 'data');
 
 // Cache for loaded prefixes
 const prefixCache = new Map<string, Record<string, RncRecord> | null>();
@@ -28,7 +28,7 @@ async function loadPrefix(prefix: string): Promise<Record<string, RncRecord> | n
   if (prefixCache.has(prefix)) return prefixCache.get(prefix) || null;
 
   const filePath = path.join(DATA_DIR, `${prefix}.json`);
-  
+
   if (!existsSync(filePath)) {
     prefixCache.set(prefix, null);
     return null;
@@ -61,10 +61,10 @@ export async function search(query: string, limit: number = 20): Promise<RncReco
 
   let files: string[] = [];
   try {
-      files = await fs.readdir(DATA_DIR);
+    files = await fs.readdir(DATA_DIR);
   } catch (e) {
-      console.error("Data dir not found", e);
-      return [];
+    console.error("Data dir not found", e);
+    return [];
   }
 
   const results: RncRecord[] = [];
@@ -78,10 +78,10 @@ export async function search(query: string, limit: number = 20): Promise<RncReco
     for (const rnc in bucket) {
       if (results.length >= limit) break;
       const rec = bucket[rnc];
-      
-      if (rnc.includes(q) || 
-          (rec.razonSocial && rec.razonSocial.toLowerCase().includes(q)) || 
-          (rec.nombreComercial && rec.nombreComercial.toLowerCase().includes(q))) {
+
+      if (rnc.includes(q) ||
+        (rec.razonSocial && rec.razonSocial.toLowerCase().includes(q)) ||
+        (rec.nombreComercial && rec.nombreComercial.toLowerCase().includes(q))) {
         results.push(rec);
       }
     }
